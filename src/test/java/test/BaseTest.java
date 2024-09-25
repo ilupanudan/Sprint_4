@@ -3,6 +3,8 @@ package test;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import ru.yandex.praktikum.pageobject.HomePage;
@@ -19,13 +21,13 @@ public class BaseTest {
 
     @Before
     public void run() {
-        //ChromeOptions options = new ChromeOptions();
-        //options.addArguments("--no-sandbox", "--disable-search-engine-choice-screen", "--disable-dev-shm-usage");
-        //driver = new ChromeDriver(options);
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox", "--disable-search-engine-choice-screen", "--disable-dev-shm-usage");
+        driver = new ChromeDriver(options);
 
-        FirefoxOptions options = new FirefoxOptions();                      //Раскомментить для Firefox
-        options.addArguments("--no-sandbox","--disable-search-engine-choice-screen" , "--disable-dev-shm-usage");
-        driver = new FirefoxDriver(options);
+        //FirefoxOptions options = new FirefoxOptions();                      //Раскомментить для Firefox
+        //options.addArguments("--no-sandbox","--disable-search-engine-choice-screen" , "--disable-dev-shm-usage");
+        //driver = new FirefoxDriver(options);
 
         //Переходим по URL
         driver.get(HOMEURL);
