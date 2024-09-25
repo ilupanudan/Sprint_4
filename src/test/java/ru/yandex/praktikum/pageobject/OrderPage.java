@@ -28,34 +28,34 @@ public class OrderPage {
 
 
     //Локатор поля ввода имени
-    public By nameField = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[1]/input");
+    public By nameField = By.xpath(".//div[2]/div[1]/input");
 
     //Локатор поля ввода фамилии
-    public By surnameField = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[2]/input");
+    public By surnameField = By.xpath(".//div[2]/div[2]/input");
 
     //Локатор поля выбора станции метро
-    public By stationField = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[4]/div/div/input");
+    public By stationField = By.xpath(".//div[4]/div");
 
     //Локатор поля ввода телефона
-    public By phoneField = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[5]/input");
+    public By phoneField = By.xpath(".//div[5]/input");
 
     //Локатор кнопки "Далее"
-    public By nextButton = By.xpath("//*[@id=\"root\"]/div/div[2]/div[3]/button");
+    public By nextButton = By.xpath(".//div[2]/div[3]/button");
 
     //Локатор поля ввода даты
-    public By dateField = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[1]/div/div/input");
+    public By dateField = By.className("react-datepicker-wrapper");
 
     //Локатор поля ввода срока аренды
-    public By timeField = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[2]/div");
+    public By timeField = By.className("Dropdown-root");
 
     //Локатор кнопки "Заказать" в окне заказа
-    public By orderButton = By.xpath("//*[@id=\"root\"]/div/div[2]/div[3]/button[2]");
+    public By orderButton = By.xpath(".//div[3]/button[2]");
 
     //Локатор кнопки подтверждения заказа
-    public By confirmButton = By.xpath("//*[@id=\"root\"]/div/div[2]/div[5]/div[2]/button[2]");
+    public By confirmButton = By.xpath(".//button[text()='Да']");
 
     //Локатор окна при успешном заказе
-    public By succesWindow = By.xpath("/html/body/div/div/div[2]/div[5]/div[1]");
+    public By succesWindow = By.xpath(".//div[5]/div[1]");
 
     //Общий метод нажатия на элемент
     public void clickOnElement(By by){
@@ -71,8 +71,8 @@ public class OrderPage {
     //Выбор станции метро
     public void chooseStation(){
         Random station = new Random();
-        int stationIndex = station.nextInt(237)+1;
-        By stationList = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[4]/div/div[2]/ul/li["+(stationIndex)+"]");
+        int stationIndex = station.nextInt(225)+1;
+        By stationList = By.xpath(".//div[2]/ul/li["+(stationIndex)+"]");
         WebElement thisStation = driver.findElement(stationList);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", thisStation);
         driver.findElement(stationList).click();
@@ -83,7 +83,7 @@ public class OrderPage {
         Random date = new Random();
         int weekIndex = date.nextInt(6)+1;
         int dayIndex = date.nextInt(7)+1;
-        By dayList = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[1]/div[2]/div[2]/div/div/div[2]/div[2]/div["+(weekIndex)+"]/div["+(dayIndex)+"]");
+        By dayList = By.xpath(".//div["+(weekIndex)+"][@class='react-datepicker__week']/div["+(dayIndex)+"]");
         driver.findElement(dayList).click();
     }
 
@@ -91,7 +91,7 @@ public class OrderPage {
     public void chooseTime() {
         Random anyRent = new Random();
         int timeIndex = anyRent.nextInt(7)+1;
-        By anyTimeField = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[2]/div[2]/div["+(timeIndex)+"]");
+        By anyTimeField = By.xpath(".//div[2]/div["+(timeIndex)+"][@class='Dropdown-option']");
         driver.findElement(anyTimeField).click();
     }
 

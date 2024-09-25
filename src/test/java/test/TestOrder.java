@@ -13,7 +13,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class TestOrder extends TestSettings {
+public class TestOrder extends BaseTest {
 
     private final String name;
     private final String surname;
@@ -34,7 +34,7 @@ public class TestOrder extends TestSettings {
     }
 
     @Parameterized.Parameters
-    public static Collection<Object[]> getCredentials() {
+    public static Collection<Object[]> getParamsButtonsAndExpectedResults() {
         return Arrays.asList(new Object[][]{
                 {"Илья", "Михалев", "89885762655", headerOrderButton, true},
                 {"Екатерина", "Андренко", "89885556677", bottomOrderButton, true},
@@ -45,7 +45,7 @@ public class TestOrder extends TestSettings {
 
     @Test
 
-    public void TestOrder() {
+    public void testOrder() {
 
         HomePage objHomePage = new HomePage(driver);
         OrderPage objOrderPage = new OrderPage(driver);

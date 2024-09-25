@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 
 @RunWith(Parameterized.class)
-public class TestFaqText extends TestSettings {
+public class TestFaqText extends BaseTest {
     private final int index;
     private final String faqButtonText;
     private final String faqFieldText;
@@ -25,7 +25,7 @@ public class TestFaqText extends TestSettings {
     }
 
     @Parameterized.Parameters
-    public static Object[] getCredentials() {
+    public static Object[] getIndexAndTexts() {
         return new Object[][]{
                 {0,"Сколько это стоит? И как оплатить?", "Сутки — 400 рублей. Оплата курьеру — наличными или картой."},
                 {1,"Хочу сразу несколько самокатов! Так можно?", "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим."},
@@ -38,7 +38,7 @@ public class TestFaqText extends TestSettings {
         };
     }
     @Test
-    public void Test() {
+    public void testFaqTexts() {
 
         HomePage objHomePage = new HomePage(driver);
 

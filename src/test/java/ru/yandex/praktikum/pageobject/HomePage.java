@@ -72,16 +72,18 @@ public class HomePage {
         return driver.findElement(faqField(index)).getText();
     }
 
-    //Общий метод нажатия на элемент
+    //Общий метод проверки и нажатия на элемент (-добавил проверку на кликабельность.)
     public void clickOnElement(By by){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
         driver.findElement(by).click();
     }
 
     //Локатор верхней кнопки "Заказать"
-    public static By headerOrderButton = By.xpath("//*[@id=\"root\"]/div/div/div[1]/div[2]/button[1]");
+    public static By headerOrderButton = By.xpath(".//button[@class='Button_Button__ra12g']");
 
     //Локатор нижней кнопки "Заказать"
-    public static By bottomOrderButton = By.xpath(" //*[@id=\"root\"]/div/div/div[4]/div[2]/div[5]/button");
+    public static By bottomOrderButton = By.xpath(".//div[5]/button");
 
     //Геттер для верхней кнопки
     public static By getHeaderOrderButton(){
